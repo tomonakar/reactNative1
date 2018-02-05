@@ -6,10 +6,11 @@ import CircleButton from '../elements/CircleButton'
 
 class MemoListScreen extends React.Component {
   render() {
+    this.props.navigation.navigate('MemoDetail')
     return (
       <View style={styles.container}>
-        <MemoList />
-        <CircleButton>{'\uf067'}</CircleButton>
+        <MemoList navigation={this.props.navigation} />
+        <CircleButton onPress={() => { this.props.navigation.navigate('MemoDetail') }}>{'\uf067'}</CircleButton>
       </View>
     )
   }
@@ -19,6 +20,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     flex: 1,
+    backgroundColor: '#fffdf6'
   }
 })
 export default MemoListScreen
