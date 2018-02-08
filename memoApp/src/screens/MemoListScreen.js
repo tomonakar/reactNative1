@@ -6,7 +6,6 @@ import CircleButton from '../elements/CircleButton'
 
 class MemoListScreen extends React.Component {
   render() {
-    this.props.navigation.navigate('MemoDetail')
     return (
       <View style={styles.container}>
         <MemoList navigation={this.props.navigation} />
