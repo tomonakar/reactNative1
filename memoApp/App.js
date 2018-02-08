@@ -3,7 +3,7 @@ import {StackNavigator} from 'react-navigation'
 
 import MemoListScreen from './src/screens/MemoListScreen'
 import MemoDetailScreen from './src/screens/MemoDetailScreen'
-import MemoCreateScreen from './src/screens/MemoCreate'
+import MemoCreateScreen from './src/screens/MemoCreateScreen'
 import MemoEditScreen from './src/screens/MemoEditScreen'
 import LoginScreen from './src/screens/LoginScreen'
 import SignupScreen from './src/screens/SignupScreen'
