@@ -12,20 +12,26 @@ class MemoEditScreen extends React.Component {
 
   componentWillMount() {
     const { params } = this.props.navigation.state
-    this.setState({body: params.memo.body, key: params.memo.key })
+    this.setState({body: params.body, key: params.key })
   }
 
   handlePress() {
     const { currentUser } = firebase.auth()
     const db = firebase.firestore()
-    console.log(currentUser);
+    const newDate = new Date()
 
     db.collection(`users/${currentUser.uid}/memos`).doc(this.state.key)
       .update({
         body: this.state.body
       })
       .then(() => {
-        console.log('success');
+        const { navigation } = this.props
+        navigation.state.params.returnMemo({
+          body: this.state.body,
+          key: this.state.key,
+          createdOn: newDate
+        })
+        this.props.navigation.goBack()
       })
       .catch((error) => {
         console.log(error);
@@ -33,7 +39,6 @@ class MemoEditScreen extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <View style={styles.container}>
         <TextInput
