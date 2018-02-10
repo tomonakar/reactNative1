@@ -5,7 +5,6 @@ import firebase from 'firebase'
 import MemoList from '../components/MemoList'
 import CircleButton from '../elements/CircleButton'
 
-
 class MemoListScreen extends React.Component {
   state = {
     memoList: []
