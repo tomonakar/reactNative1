@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, View, Text, TextInput, TouchableHighlight} from 'react-native'
+import {StyleSheet, View, Text, TextInput, TouchableHighlight, TouchableOpacity} from 'react-native'
 import firebase from 'firebase'
 import { NavigationActions } from 'react-navigation'
 
@@ -20,10 +20,14 @@ class LoginScreen extends React.Component {
         })
         this.props.navigation.dispatch(resetAction)
       })
-      .catch((error) => {
-        console.log('error', error);
+      .catch(() => {
       })
   }
+
+  handlePress() {
+    this.props.navigation.navigate('Signup')
+  }
+
 
   render() {
     return (
@@ -49,6 +53,9 @@ class LoginScreen extends React.Component {
         <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}>
           <Text style={styles.buttonTitle}>ログインする</Text>
         </TouchableHighlight>
+        <TouchableOpacity style={styles.signup} onPress={this.handlePress.bind(this)}>
+          <Text style={styles.signupText}>メンバーを登録する</Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -86,6 +93,13 @@ const styles = StyleSheet.create({
   buttonTitle: {
     color: '#fff',
     fontSize: 18
+  },
+  signup: {
+    marginTop: 16,
+    alignSelf: 'center'
+  },
+  signupText: {
+    fontSize: 16
   }
 })
 
